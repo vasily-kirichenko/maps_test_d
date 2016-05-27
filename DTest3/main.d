@@ -29,12 +29,10 @@ int main() {
 	elapsed = stopTime!({
 		auto acc = 0;
 		foreach(x; source) {
-			auto v = x in m;
-			if (v !is null)
+			if (auto v = x in m)
 				acc += *v % 10;
-			auto _ = m[x];
 		}
-		});
+	});
 	writefln("Lookup: %d msecs\n", elapsed);
 
 	readln();
